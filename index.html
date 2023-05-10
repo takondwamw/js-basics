@@ -17,6 +17,54 @@
          document.body.innerHTML = 'hie there';  
          let problem = 10 * 3;
          print(problem);
+        
+         //   operator precedence
+        //  + - all operate from the left to the right
+        //  * and / starts from left to right
+        //  i.e let problem = 20.95 + 7.99 * 2
+        
+        print(20.95 + 7.99 * 2 );
+        
+        //  when calculating money the best practice is to do the calculation in cents / tambala
+        //  i.e 28.95 + 7.99 would be calculated as 2899 + 799 so to convert back to the  real money  / 100t
+        print(((2899 + 799 ) *0.1 ) / 100);
+
+        // using the Math Object
+        
+        Math.round(((2899 + 799 ) * 0.1 ) / 100); 
+        
+        // exercises
+        // 1.a at a restaurant , you order 1 soup for  $10 , 3 burgers for $8 each , and 1 ice cream for $5. use javascript to calaculate 
+        // the cost of the order
+        
+        let burger = 10;
+        let burgers3 = 8 * 3;
+        let iceCream = 5;
+        let total_cost = burger + iceCream + burgers3;
+        
+        print(total_cost);
+        
+        //  question 2 . you're at a restaurant with 2 friends ( 3 people ) in total and make the same order as in 1.a above
+        //  calculate how much each person pays.
+       
+        print ( total_cost * 3 / 3);
+
+        //  question 3. calculate the total cost of a toaster ($18.50) and 2 tshirts ( $7.50) each.
+        
+        let toaster = 18.50;
+        let tshirts = (750 * 2 ) / 100;
+
+        print(toaster + tshirts );
+
+        //  question 3 . calculate a 10% tax for the toatal in exercise above .
+        
+        let answerAbove = toaster + tshirts;
+        print (answerAbove * 0.1 );
+
+        //  calculate a 20% tax for  the total in 2c above 
+
+        print (answerAbove * 0.2 );
+
     </script>
 </body>
 </html>
