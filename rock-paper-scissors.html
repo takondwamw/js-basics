@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <p> Rock Paper Scissors</p>
+    <button onclick="pickChoice('Rock')">Rock</button>
+    <button onclick="pickChoice('Paper')">Paper</button>
+    <button onclick="pickChoice('Scissors')">Scissors</button>
+
+    <script>
+
+        function pickChoice(choice){
+           return chhoice = choice;
+        }
+        
+        function computerChoice(){
+            const randomNumber = Math.round();
+            let computerMove = '' ;
+            if( randomNumber >= 0 && randomNumber < 1/3 ){
+                    computerMove = "Rock";
+            }else if ( randomNumber >= 1/3 && randomNumber < 2/3 ){
+                    computerMove = "Paper";
+            }else if (randomNumber > 2/3 && randomNumber < 1 ){
+                computerMove = "Scissors";
+            }
+            
+            return computerMove;
+        }
+
+        function print (yourMove='',pcMove='',result=''){
+            let msg = `You picked ${yourMove} . computer picked ${pcMove} . therefore you ${result}`;
+            return  window.alert(msg)
+
+        }
+
+        function checkResult (pc , me){
+            switch (me) {
+                case "Paper" &&  pc === "Paper":
+                    let res = "its a tie"
+                    print(me,pc,res);                    
+                    break;
+                
+                case "Rock" &&  pc === "Paper":
+                    let res = "You Lose"
+                    print(me,pc,res);                    
+                    break;
+                
+                case "Scissors" &&  pc === "Paper":
+                    let res = "You win"
+                    print(me,pc,res);                    
+                    break;
+                
+                case "Rock" &&  pc === "Rock":
+                    let res = "its a tie"
+                    print(me,pc,res);                    
+                    break;
+                
+                case "Scissors" &&  pc === "Scissors":
+                    let res = "its a tie"
+                    print(me,pc,res);                    
+                    break;
+                
+                case "Paper" &&  pc === "Paper":
+                    let res = "its a tie"
+                    print(me,pc,res);                    
+                    break;
+                
+            
+                default:
+                    break;
+            }
+        }
+
+        console.log(computerChoice())
+      
+    </script>
+</body>
+</html>
