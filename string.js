@@ -1,2 +1,2 @@
 console.log('hello');
-throw console.error('failed to load');
+confirm('are you sure'); 
