@@ -8,9 +8,11 @@
 </head>
 <body>
     <p> Rock Paper Scissors</p>
-    <button onclick="pickChoice('Rock')">Rock</button>
-    <button onclick="pickChoice('Paper')">Paper</button>
-    <button onclick="pickChoice('Scissors')">Scissors</button>
+    <button onclick="checkResult(computerChoice(), pickChoice('Rock'))">Rock</button>
+    <button onclick="checkResult(computerChoice(), pickChoice('Paper'))">Paper</button>
+    <button onclick="checkResult(computerChoice(), pickChoice('Scissors'))">Scissors</button>
+    <button onclick="reset(score)">Reset Scores</button>
+    
 
     <script>
 
@@ -32,47 +34,75 @@
                 return computerMove;
          }
 
-        function print (yourMove='',pcMove='',result=''){
-            let msg = `You picked ${yourMove} . computer picked ${pcMove} . therefore you ${result}`;
+        function print (yourMove='',pcMove='',result='',score){
+            let msg = `You picked ${yourMove} . computer picked ${pcMove} . therefore you ${result}
+                        wins : ${ score.win} , Losses : ${ score.loss } , Ties :  ${ score.loss }
+            `;
             return  window.alert(msg)
 
         }
 
+        const score = {
+                win  :0 ,
+                tie  : 0 ,
+                loss : 0,
+            }
+
+        function reset(score){
+            score.win = 0;
+            score.tie = 0;
+            score.loss = 0;
+        }
+
         function checkResult (pc , me){
-            let res;
+            let res; 
+            // const score = {
+            //     win  :0 ,
+            //     tie  : 0 ,
+            //     loss : 0,
+            // }
             switch (me) {
                 case "Paper":
                     if (pc === "Paper") {
                         res = "it's a tie";
+                        score.tie += 1;      
                     } else if (pc === "Rock") {
                         res = "You Win";
+                        score.win += 1;
                     } else {
                         res = "You Lose";
+                        score.loss += 1;
                     }
                     break;
                 
                 case "Rock":
                     if (pc === "Rock") {
                         res = "it's a tie";
+                        score.tie += 1;
                     } else if (pc === "Scissors") {
                         res = "You Win";
+                        score.win += 1;
                     } else {
                         res = "You Lose";
+                        score.loss += 1;
                     }
                     break;
                 
                 case "Scissors":
                     if (pc === "Scissors") {
                         res = "it's a tie";
+                        score.tie += 1;
                     } else if (pc === "Paper") {
                         res = "You Win";
+                        score.win += 1;
                     } else {
                         res = "You Lose";
+                        score.loss += 1;
                     }
                     break;
             }
             
-             print(me, pc, res);
+             print(me, pc, res,score);
        }
 
       
