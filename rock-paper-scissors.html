@@ -38,7 +38,7 @@
             let msg = `You picked ${yourMove} . computer picked ${pcMove} . therefore you ${result}
                         wins : ${ score.win} , Losses : ${ score.loss } , Ties :  ${ score.loss }
             `;
-            return  window.alert(msg)
+            return  window.alert(msg);
 
         }
 
@@ -52,6 +52,7 @@
             score.win = 0;
             score.tie = 0;
             score.loss = 0;
+            return print(score);
         }
 
         function checkResult (pc , me){
