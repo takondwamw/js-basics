@@ -1,18 +1,37 @@
 // Game class to handle game logic and state
 class Game {
+
     constructor() {
-      this.score = {
-        wins: 0,
-        ties: 0,
-        losses: 0
-      };
-      this.choices = ["rock", "paper", "scissors"];
-      this.alert = document.createElement("div");
-      this.alert.classList.add("alert");
-      document.body.appendChild(this.alert);
-      this.alertTimeoutId = null;
-    }
-  
+        const storedScore = localStorage.getItem('score');
+        if (storedScore) {
+            this.score = JSON.parse(storedScore);
+            this.updateScore(); 
+            console.log(storedScore);
+        } else {
+            this.score = {
+                wins: 0,
+                ties: 0,
+                losses: 0
+            };
+
+            localStorage.setItem('score', JSON.stringify(this.score));
+            this.updateScore(); 
+            console.log('space');
+            console.log(this.score.losses);
+
+
+        }
+
+            this.choices = ["rock", "paper", "scissors"];
+            this.alert = document.createElement("div");
+            this.alert.classList.add("alert");
+            document.body.appendChild(this.alert);
+            this.alertTimeoutId = null;
+     
+    };
+    
+
+
     // Reset score
     resetScore() {
       this.score = {
