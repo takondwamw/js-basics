@@ -3,10 +3,11 @@ class Game {
 
     constructor() {
         const storedScore = localStorage.getItem('score');
+        console.log(JSON.parse(localStorage.getItem('score')));
         if (storedScore) {
             this.score = JSON.parse(storedScore);
             this.updateScore(); 
-            console.log(storedScore);
+            console.log(this.score);
         } else {
             this.score = {
                 wins: 0,

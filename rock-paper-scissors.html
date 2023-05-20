@@ -42,26 +42,32 @@
 
         }
 
-        const score = {
+        let storedScore = localStorage.getItem('score');
+
+        let score;   
+
+        if ( storedScore){
+            score = JSON.parse(storedScore);
+        }else if(!score){
+            score = {
                 win  :0 ,
                 tie  : 0 ,
                 loss : 0,
             }
+        };
+       
 
         function reset(s){
             s.win = 0;
             s.tie = 0;
             s.loss = 0;
+            localStorage.removeItem('score');
             return alert(`reset to : ${s.win} , ${ s.tie } , ${ s.loss } ` );
         }
 
         function checkResult (pc , me){
             let res; 
-            // const score = {
-            //     win  :0 ,
-            //     tie  : 0 ,
-            //     loss : 0,
-            // }
+       
             switch (me) {
                 case "Paper":
                     if (pc === "Paper") {
@@ -104,6 +110,7 @@
             }
             
              print(me, pc, res,score);
+             localStorage.setItem('score',JSON.stringify(score));
        }
 
       
