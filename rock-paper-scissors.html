@@ -12,6 +12,7 @@
     <button onclick="checkResult(computerChoice(), pickChoice('Paper'))">Paper</button>
     <button onclick="checkResult(computerChoice(), pickChoice('Scissors'))">Scissors</button>
     <button onclick="reset(score)">Reset Scores</button>
+    <p class=".results"></p>
     
 
     <script>
@@ -34,11 +35,19 @@
                 return computerMove;
          }
 
+         function updateScore (msg){
+
+            let elm = document.querySelector("p");
+            return elm.textContent = msg
+
+         }
+
         function print (yourMove='',pcMove='',result='',score){
             let msg = `You picked ${yourMove} . computer picked ${pcMove} . therefore you ${result}
                         wins : ${ score.win} , Losses : ${ score.loss } , Ties :  ${ score.loss }
             `;
-            return  window.alert(msg);
+           
+            return  updateScore(msg);
 
         }
 
@@ -62,7 +71,8 @@
             s.tie = 0;
             s.loss = 0;
             localStorage.removeItem('score');
-            return alert(`reset to : ${s.win} , ${ s.tie } , ${ s.loss } ` );
+            let msg = `reset to : ${s.win} , ${ s.tie } , ${ s.loss } `;
+            return updateScore(msg);
         }
 
         function checkResult (pc , me){

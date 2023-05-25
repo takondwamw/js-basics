@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search With keys</title>
+    <style>
+        body{
+            background-color: black;
+            color: #fff;
+
+        }
+        input{
+            padding: 10px 10px 10px 10px;
+            front-size: 20px;
+            background-color: transparent;
+            border-radius: 20px;
+            border: .0px dashed;
+            cursor: pointer;
+            color:  rgb(240,240,240);
+            outline: none;
+            width: 400px !important;
+        }
+        h1{
+            font-weight: bold;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1> kindly press ctrl + s to bring the search input</h1>
+    <input type="search" name="search" id="search" placeholder="Enter your Search Word" onkeydown="bringSearch(event)">
+    <script>
+        // bring up search
+        let search = document.querySelector('#search');
+        search.setAttribute('style','visibility: none !important');
+
+        // search
+        function bringSearch(evt){
+                if( evt.key === "S" && evt.shiftKey === true ) {
+                    alert('yes')
+                 }else{
+                     search; 
+                 }
+                /*  the event object has got more than what meets the eye these
+                    you can have acces to more user info and  the machine just by accessing the
+                    view property on the object ie event.view.clientIformation. e.t.c this has a 
+                    whole lot of information on the client from the machine name and browser name
+                    even the operating system's version of it and the architechture too
+                    whether be it a 64 bit or 32 bit machine even bluetooth too.
+                */ 
+                 console.log(evt.view.clientInformation.appCodeName);
+                 let $ = (elm) => { return document.querySelector(elm)};
+                 console.log($("#search").value);
+        }
+        document.onkeydown = (e) => {
+            if(e.key === "p" && e.ctrlKey === true) {
+            e.preventDefault();
+            alert('this site does not allow printing part of the content')
+            }
+           
+        }
+     </script>
+</body>
+</html>
