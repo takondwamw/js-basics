@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heads Or Tail</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+</head>
+<body class="bg-dark">
+    <div class="container-fluid">
+        <p class="lead text-center">To Do List App</p>
+
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <input type="text" class="form-control todo">
+            </div>
+            <div class="form-group col-sm-4">
+                <input type="date" class="form-control date">
+            </div>
+            <div class="form-group col-sm-2">
+                <button type="submit" class="btn btn-success form-control" onclick="add()">Add</button>
+            </div>
+        </div>
+
+        <div class="mt-5 place-holder">
+
+        </div>
+
+        
+    </div>
+    <script>
+
+        const todoList = [];
+        function add(){
+            const todoItem = document.querySelector("input.todo").value;
+            const date = document.querySelector("input.date").value;
+            todoList.push([date,todoItem]);
+
+            updateScreen(todoList);
+        }
+
+        function updateScreen(todo){
+            let html ="";
+            let place = document.querySelector(".place-holder");
+            for(let i=0;i <= todo.length;i++){
+                let tName = todo[i][1];
+                let tDate = todo[i][0];
+                let generated = `<div class="p-2 rounded-lg mt-5"><p class="lead col-sm-6">${tName}</p>
+                         <p class="lead col-sm-4">${tDate}</p>
+                         <button class="btn btn-danger col-sm-2">Delete</button></div>`;
+                html += generated;
+                // console.log(tName);
+                // console.log(tDate);
+                console.log(html)
+                place.innerHTML = html;
+
+            };
+            // console.log(todo[0][0]);
+        }
+    
+    </script>
+</body>
+</html>

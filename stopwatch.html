@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <title>Stop Watch</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- <div class="row"> -->
+            <div class="cotainer bg-dark">
+                <div class="row">
+                    <p class="col-md-12 display-4 here">00 : 00: 00</p>
+                 </div>  
+
+                 <div class="row">
+                    <div class="btn-group col-md-12">
+                        <button class="btn btn-group-item btn-success" onclick="start()">Start</button>
+                        <button class="btn  btn-group-item btn-danger" onclick="reset()">Reset</button>
+                    </div>
+                 </div>
+                
+                  <!-- <div class="col-md-3">
+                  </div> -->
+            </div>
+        <!-- </div> -->
+    </div>
+
+<script>
+   let $ = (elm) => { return document.querySelector(elm)};
+   let timer;
+   let seconds =0;
+   let isRunning = false;
+   
+   function start(){
+    if (isRunning) {
+        clearInterval(timer);
+        $("button.btn-success").textContent = "Start";
+        $("p.here").textContent = `00 : 00: 00 `;
+        // seconds =0;
+
+
+    } else {
+        timer = setInterval( () => {
+            updateTime()
+        },1000)
+        $("button.btn-success").textContent = "Stop";
+
+    }
+    isRunning = !isRunning;
+   }
+
+    function updateTime(){
+        seconds++;
+        const hours   = Math.floor(seconds / 3600);
+        const minutes = Math.floor(seconds % 3600 / 60);
+        const sec = Math.floor(seconds % 60);
+        $("p.here").textContent = `${formatTime(hours)} : ${formatTime(minutes)} : ${formatTime(sec)}`;
+    }
+
+    function formatTime(time){
+        return time < 10 ? `0${time}` : time;
+    }
+
+    function reset(){
+
+     
+        if( isRunning || seconds > 0 ){
+            clearInterval(timer);
+            let value = $("button.btn-success").textContent = "Start";
+            $("p.here").textContent = `00 : 00: 00 `;
+            seconds =0;
+        }else{
+            clearInterval(timer);
+            // let value = $("button.btn-success").textContent = "Start";
+            $("p.here").textContent = `00 : 00: 00 `;
+            isRunning = false;
+            seconds =0;
+        }
+    }
+   
+//    function start(){
+        
+//         let $ = (elm) => { return document.querySelector(elm)};
+//         let timelapse = new Date().getTime();
+//         let hours = Math.floor(timelapse / ( 60 * 60 * 1000));
+//         let seconds = Math.floor(hours % 1000 );
+//         let miliseconds = Math.floor(timelapse % 1000 );
+//        setInterval(()=>{
+//             console.log( console.log(` time : ${hours} : ${seconds} : ${miliseconds} `));
+
+//        },1000)
+
+//     }
+        
+</script>
+</body>
+</html>

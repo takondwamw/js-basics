@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Projects</title>
+    <style>
+        .btn{
+            border-radius: 20px;
+            font-size: large;
+        }
+        .subs{
+            color: #ffffff;
+            background-color: #000000;
+            border-radius: 20px;
+            font-size: large;
+        }
+
+    </style>
+</head>
+<body>
+    <button class="btn"> Subscribe</button>
+    <script>
+        document.querySelector(".btn").addEventListener("click",(e)=>{
+            // alert(`clicked ${e.srcElement.textContent}`);
+            if(e.srcElement.innerText === "Subscribe"){
+                e.srcElement.innerText = "Subscribed";
+                e.srcElement.classList.toggle("subs");
+            }else{
+                let choice = confirm("Are You Sure you Want To Unsubscribe ?");
+                // console.log(choice);
+                switch(choice){
+                    case true:
+                        e.srcElement.innerText = "Subscribe";
+                        e.srcElement.classList.toggle("subs");
+                        break;
+                    default:
+                        e.srcElement.innerText = "Subscribed";
+                        // e.srcElement.classList.toggle("subs");
+
+                }      
+            }
+        })
+        const myArr = [10 , 20, [30,40,50],60];
+        
+    </script>
+</body>
+</html>

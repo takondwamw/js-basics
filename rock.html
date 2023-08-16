@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Game</title>
+    <style>
+        .btn_container{
+            /* display: flex; */
+            /* align-items:center ; */
+            /* justify-content: space-between; */
+            /* grid-template-columns: 3; */
+            
+        };
+        button{
+            width: 10px;
+            background-color: #111111 !important;
+            color: #fff !important;
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rock Paper Scissors Game</h1>
+    <div class="btn_container">
+        <button>Rock</button>
+        <button>Paper</button>
+        <button>Scissors</button>
+    </div>
+
+    <script>
+        let hour = 20;
+        if(hour <= 12){
+                console.log("Good Morning");
+
+        }
+        else if( hour >= 12 && hour <= 17){
+                console.log("Good Afternoon ");
+        }
+        else{
+                console.log("Good night");
+        }
+        
+        let age = 65;
+        let isHoliday = false;
+        if( (age <= 6 || age >= 65) && isHoliday != true){
+            console.log("Here Is your Dsicount ")
+        }else{
+            console.log("Sorry Buddy at your Age You do not desrve a dsicount and It's also Not A holiday ");
+        }
+
+    </script>
+
+</body>
+</html>

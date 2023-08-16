@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heads Or Tail</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+</head>
+<body class="bg-dark">
+    <div class="container-fluid">
+
+        <div class="row">
+            <p class="text-center">Flip The Coin Game</p>
+            <p class="result text-center"></p> 
+             <span class="wins"></span>
+        </div>
+
+        <div class="row">
+            <div class="btn-group">
+                <button class="btn btn-group-item btn-warning" onclick="flip('Heads')">Heads</button>
+        <button class="btn btn-group-item btn-large btn-danger" onclick="flip('Tail')">Tail</button>
+            </div>
+        </div>
+       
+        
+    </div>
+    <script >
+       let  $ = (elm)=>{ return  document.querySelector(elm); }
+       let result;
+       let wins = 0;
+       let loss = 0;
+       function flip(choice = "Blank"){
+              const check = Math.random();
+              let computerMove = check <= 0.5 ? "Heads" : "Tail";
+              result = computerMove === choice ?  `You Won:  Computer Chose  '${computerMove}' and  You Picked '${choice}'`
+                                               :  `You Lost: Computer Chose  '${computerMove}' and  You Picked '${choice}'`;
+              if(computerMove === choice){
+                     wins+=1;
+              }else{
+                     loss +=1;
+              }
+              
+              toStorage("wins",wins);
+              toStorage("loss",loss);
+              
+              return $(".result").textContent = result;
+       }
+       function toStorage(name="",value=""){
+                return localStorage.setItem(name,value);
+       }
+       function fromStorage(name=""){
+                return localStorage.getItem(name);
+       }
+       
+       setInterval(() => {
+          $("span.wins").textContent = `Wins : ${fromStorage("wins")} , Losses : ${fromStorage("loss")}`;
+
+       }, 1000);
+
+    </script>
+</body>
+</html>
